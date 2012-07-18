@@ -24,7 +24,10 @@ function loadSocketIo(callback) {
 console.log("start")
 loadSocketIo(
     function(){
-        console.log("script OK");
+        var socket = io.connect('http://localhost:3002/');
+        socket.on('change', function() {
+            location.reload();
+        });
     }
 );
 
