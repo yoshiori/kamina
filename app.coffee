@@ -25,7 +25,7 @@ server = http.createServer( (req,res) ->
     res.writeHead(200, { 'Content-Type': 'text/html' })
     res.end(html)
 )
-server.listen(3002)
+server.listen(3002, 'localhost')
 
 io = require('socket.io').listen(server)
 io.sockets.on('connection',(socket) ->
