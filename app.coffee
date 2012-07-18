@@ -3,9 +3,27 @@ fs = require 'fs'
 http = require 'http'
 path = require 'path'
 
+html = '''
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>kamina</title>
+  </head>
+  <body>
+    <a href="/filecheck.user.js">userscript download</a>
+  </body>
+</html>
+'''
+
 server = http.createServer( (req,res) ->
-  res.writeHead(200, { 'Content-Type': 'text/html' })
-  res.end("<html><head></head><body>hello</body></html>")
+  if req.url == '/filecheck.user.js'
+    fs.readFile('client/filecheck.user.js', (error, content) ->
+      res.writeHead(200, { 'Content-Type': 'text/javascript' })
+      res.end(content, 'utf-8')
+    )
+  else
+    res.writeHead(200, { 'Content-Type': 'text/html' })
+    res.end(html)
 )
 server.listen(3002)
 
