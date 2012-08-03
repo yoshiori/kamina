@@ -26,7 +26,7 @@ loadSocketIo(
     function(){
         var socket = io.connect('http://localhost:3002/');
         socket.on('change', function() {
-            location.reload();
+            location.reload(true);
         });
     }
 );
