@@ -54,4 +54,4 @@ findfile = (target) ->
   )
 target = process.argv[2]
 console.log("target base is #{target}")
-findfile(target)
+findfile(t) for t in target.split(",")
