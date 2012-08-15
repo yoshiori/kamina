@@ -52,6 +52,6 @@ findfile = (target) ->
       console.log("target file is #{target}")
       setWatch(target)
   )
-target = process.argv[2]
+target = process.argv[2..]
 console.log("target base is #{target}")
-findfile(t) for t in target.split(",")
+findfile(t) for t in target
